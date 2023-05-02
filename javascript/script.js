@@ -29,13 +29,15 @@ const getWeatherData = async(city) => {
 const showWeatherData = async(city) => {
   const data = await getWeatherData(city);
 
+  console.log(data)
+
   cityElement.innerText = data.name;
   tempElement.innerText = parseInt(data.main.temp);
   descElement.innerText = data.weather[0].description;
   weatherIconElement.setAttribute("src", `http://openweathermap.org/img/wn/${data.weather[0].icon}.png`);
-  countryElement.setAttribute("src", apiCountryURL + data.sys.country);
+  countryElement.setAttribute("src", apiCountryURL + data.sys.country + "/shiny/64.png");
   humidityElement.innerText = `${data.main.humidity}%`;
-  windElement.innerText = `${data.main.speed}km/h`;
+  windElement.innerText = `${data.wind.speed}km/h`;
 
   weatherContainer.classList.remove("hide")
 };
